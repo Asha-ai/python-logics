@@ -20,6 +20,22 @@ for i in df1.index:
     if((currntdate >= df1['startdate'][i]) & (currntdate <= df1['enddate'][i])):
         data = {'startdate' : df1['startdate'][i], 'enddate' : df1['enddate'][i], 'item' : df1['item'][i]}
         data_list.append(data)  
-### Step4  conert into pandas dataframe
+### Step 4: conert into pandas dataframe
 df = pd.DataFrame(data_list)
 df
+
+# Step 5: Calculate number of offer days and add new column
+
+df1['numberofdays'] = df1['numberofdays'].astype(str)
+df1['numberofdays'] = df1['enddate']-df1['startdate']
+df1.info()
+
+#split column based on spaces
+
+df1['numberofdays'] = df1['numberofdays'].astype('str')
+df1[['no_of_days','a','b']] = df1.numberofdays.str.split(expand=True) 
+df1
+
+# drop extra columns
+df1.drop(['a','b'], axis = 1,inplace=True)
+
