@@ -1,0 +1,25 @@
+# print offer items by subtracting offer enddate- offer start date by checking current date
+
+### Step1 create dataframe
+import pandas as pd
+df = {'startdate':['2020-8-08','2020-8-09','2020-8-07','2020-11-04','2020-11-05','2020-11-06'],
+      'enddate':['2020-9-01','2020-9-02','2020-10-03','2020-12-04','2020-12-05','2020-12-06'],
+     'item':['A','B','C','D','E','F']}
+df1 = pd.DataFrame(df)
+### Step2 convert obj type to date type
+df1['startdate']= pd.to_datetime(df1['startdate'])
+df1['enddate'] = pd.to_datetime(df1['enddate'])
+df1.info()
+
+### Step3 try logic and store in a list
+data_list = []
+
+currntdate = pd.to_datetime(current_date)
+
+for i in df1.index:
+    if((currntdate >= df1['startdate'][i]) & (currntdate <= df1['enddate'][i])):
+        data = {'startdate' : df1['startdate'][i], 'enddate' : df1['enddate'][i], 'item' : df1['item'][i]}
+        data_list.append(data)  
+### Step4  conert into pandas dataframe
+df = pd.DataFrame(data_list)
+df
