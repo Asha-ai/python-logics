@@ -10,4 +10,9 @@ def extract_date(df,column):
     # Use user defined function to the dataframe
     extract_date(df,'date')
     
+    
+    
+https://colab.research.google.com/drive/1J1nwivP_T6NN2rzppK4H92O9C8e-wbUu?usp=sharing
+
+    
 
