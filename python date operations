@@ -1,0 +1,13 @@
+
+# read excel data and pase date column as date
+df = pd.read_excel("temp.xlsx",parse_dates = ['date'])
+
+# Date Extraction
+def extract_date(df,column):
+    df[column+"_year"] = df[column].apply(lambda x:x.year)
+    df[column+"_month"] = df[column].apply(lambda x:x.month)
+    
+    # Use user defined function to the dataframe
+    extract_date(df,'date')
+    
+
